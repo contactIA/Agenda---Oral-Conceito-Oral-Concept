@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda Nuova</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+      font-size: 1.5rem;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 0;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .tab-btn {
+      padding: 10px 24px;
+      border: none;
+      border-radius: 8px 8px 0 0;
+      background: #ddd;
+      color: #555;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      font-weight: 500;
+    }
+
+    .tab-btn:hover {
+      background: #c9c9c9;
+    }
+
+    .tab-btn.active {
+      background: white;
+      color: #1a73e8;
+      border-bottom: 2px solid white;
+    }
+
+    .calendar-wrapper {
+      width: 100%;
+      max-width: 1000px;
+      background: white;
+      border-radius: 0 8px 8px 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      overflow: hidden;
+    }
+
+    iframe {
+      display: none;
+      width: 100%;
+      height: 700px;
+      border: none;
+    }
+
+    iframe.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Agenda Nuova</h1>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="trocarAgenda(0)">Centro</button>
+    <button class="tab-btn" onclick="trocarAgenda(1)">Jardim Canada</button>
+    <button class="tab-btn" onclick="trocarAgenda(2)">Consultório Sérgio Miranda</button>
+  </div>
+
+  <div class="calendar-wrapper">
+    <iframe class="active"
+      src="https://calendar.google.com/calendar/embed?src=b85b11c51fc6d68c667854e3aacd2c49fb3275caa188f8eb3bee274bee82a5be%40group.calendar.google.com&ctz=America%2FSao_Paulo"
+      frameborder="0" scrolling="no">
+    </iframe>
+    <iframe
+      src="https://calendar.google.com/calendar/embed?src=d106912fea68caf079c9411eb0cbbdb3232a7ba74d7a1a46a8de1a68436da11d%40group.calendar.google.com&ctz=America%2FSao_Paulo"
+      frameborder="0" scrolling="no">
+    </iframe>
+    <iframe
+      src="https://calendar.google.com/calendar/embed?src=b5c13535337cb9c7992051b683a0e371b44bd93686b16ee81c7716fd61eabfbd%40group.calendar.google.com&ctz=America%2FSao_Paulo"
+      frameborder="0" scrolling="no">
+    </iframe>
+  </div>
+
+  <script>
+    function trocarAgenda(index) {
+      document.querySelectorAll('iframe').forEach((el, i) => {
+        el.classList.toggle('active', i === index);
+      });
+      document.querySelectorAll('.tab-btn').forEach((el, i) => {
+        el.classList.toggle('active', i === index);
+      });
+    }
+  </script>
+</body>
+</html>
